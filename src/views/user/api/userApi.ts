@@ -1,5 +1,6 @@
-import type { User } from '@/interfaces/User'
+
 import axios from 'axios'
+import type { User } from '../types'
 
 function getBaseUrl(id?: string) {
   return `/users/${id ? id : 'me'}`
@@ -78,7 +79,7 @@ export const userApi = {
         // headers: '',
       })
     } catch (error) {
-      handleApiError(error)
+      // handleApiError(error)
     }
   },
 

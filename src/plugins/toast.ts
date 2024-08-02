@@ -1,4 +1,4 @@
-import { ref, inject, provide, readonly, type Ref, type InjectionKey, } from 'vue';
+import { ref, inject, provide, readonly, type Ref, type InjectionKey, type App } from 'vue';
 
 interface Toast {
   message: string;
@@ -10,7 +10,7 @@ interface ToastContext {
   state: Readonly<Ref<Toast[]>>;
 }
 
-const ToastSymbol: InjectionKey<ToastContext> = Symbol();
+const ToastSymbol: InjectionKey<ToastContext> = Symbol('Toast');
 
 let toastId = 0;
 
@@ -33,17 +33,15 @@ export function provideToast() {
     }, 3000);
   }
 
-  const context: ToastContext = {
-    addToast,
-    state: readonly(state),
-  };
-
-  provide(ToastSymbol, context);
+  // provide(ToastSymbol, {
+  //   addToast,
+  //   state: readonly(state)
+  // });
 }
 
 const ToastPlugin = {
-  install(app) {
-    app.provide(ToastSymbol, provideToast());
+  install(app: App) {
+    provideToast(); // Call provideToast to initialize the context
     app.config.globalProperties.$toast = {
       addToast(message: string) {
         const toast = inject(ToastSymbol);

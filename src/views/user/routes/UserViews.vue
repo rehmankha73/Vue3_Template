@@ -18,6 +18,7 @@
   
   <script setup lang="ts">
   import { ref, onMounted } from 'vue'
+import type { User } from '../types';
   
   const user = ref<User | null>(null)
   const loading = ref(true)
