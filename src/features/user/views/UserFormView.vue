@@ -1,7 +1,7 @@
 <template>
   <div class="user-form">
     <h1>User Form</h1>
-
+    
     <UserForm />
   </div>
 </template>
@@ -12,5 +12,6 @@ import UserForm from '../components/UserForm.vue'
 
 <style scoped>
 .user-form {
+  padding: 20px;
 }
 </style>
