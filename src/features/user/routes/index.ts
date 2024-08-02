@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-import UsersView from '../views/UserViews.vue'
+import UsersView from '../views/UsersView.vue'
 import UserFormView from '../views/UserFormView.vue'
 import UserShowView from '../views/UserShowView.vue'
 
