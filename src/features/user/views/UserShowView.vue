@@ -18,15 +18,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-
-interface User {
-  id: string
-  name: string
-  email: string
-  age: number
-}
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import type { User } from '../interfaces/User';
 
 const route = useRoute()
 const userId = route.params.id as string
@@ -43,7 +37,7 @@ const fetchUser = async (id: string) => {
       id,
       name: 'John Doe',
       email: 'john.doe@example.com',
-      age: 30
+      age: 30,
     }
   } catch (err) {
     error.value = 'Failed to load user data'

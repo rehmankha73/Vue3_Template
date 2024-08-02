@@ -1,9 +1,9 @@
-import type { RegistrationUser } from "@/interfaces/auth/RegistrationUser";
-import type { User } from "@/views/company/types";
-import axios from "axios";
+import type { RegistrationUser } from '@/interfaces/auth/RegistrationUser'
+import type { User } from '@/views/company/types'
+import axios from 'axios'
 
 function getBaseUrl() {
-  return `/authentication`;
+  return `/authentication`
 }
 
 export const AuthApi = {
@@ -11,14 +11,14 @@ export const AuthApi = {
     try {
       const response = await axios.post(
         getBaseUrl() + `/login`,
-        { email, password },
+        { email, password }
         // { headers: localeHeader() }
-      );
+      )
 
       return {
         email: email,
         accessToken: response.data.token,
-      } as User;
+      } as User
     } catch (error) {
       // handleApiError(error);
     }
@@ -28,7 +28,7 @@ export const AuthApi = {
     try {
       await axios.get(getBaseUrl() + `/logout`, {
         // headers: authHeader(),
-      });
+      })
     } catch (error) {
       // handleApiError(error);
     }
@@ -38,11 +38,11 @@ export const AuthApi = {
     try {
       const response = await axios.post(
         getBaseUrl() + `/register`,
-        { ...user },
+        { ...user }
         // { headers: localeHeader() }
-      );
+      )
 
-      return response.data.data;
+      return response.data.data
     } catch (error) {
       // handleApiError(error);
     }
@@ -52,21 +52,21 @@ export const AuthApi = {
     try {
       await axios.post(
         getBaseUrl() + `/forgot-password`,
-        { email: email },
+        { email: email }
         // { headers: localeHeader() }
-      );
+      )
     } catch (error) {
       // handleApiError(error);
     }
   },
 
   resetPassword: async function (args: {
-    token: string;
-    email: string;
-    password: string;
-    password_confirmation: string;
+    token: string
+    email: string
+    password: string
+    password_confirmation: string
   }) {
-    const { token, email, password, password_confirmation } = args;
+    const { token, email, password, password_confirmation } = args
 
     try {
       await axios.post(
@@ -76,11 +76,11 @@ export const AuthApi = {
           email,
           password,
           password_confirmation,
-        },
+        }
         // { headers: localeHeader() }
-      );
+      )
     } catch (error) {
       // handleApiError(error);
     }
   },
-};
+}

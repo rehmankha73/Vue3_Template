@@ -1,11 +1,10 @@
 <template>
-  <div class="user-show">
-    <h1>User Details</h1>
+  <div class="user-view">
+    <h1>User Information</h1>
     <div v-if="loading">Loading...</div>
     <div v-else-if="error">{{ error }}</div>
     <div v-else>
       <div v-if="user">
-        <p><strong>ID:</strong> {{ user.id }}</p>
         <p><strong>Name:</strong> {{ user.name }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
         <p><strong>Age:</strong> {{ user.age }}</p>
@@ -19,31 +18,20 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-
-interface User {
-  id: string
-  name: string
-  email: string
-  age: number
-}
-
-const route = useRoute()
-const userId = route.params.id as string
+import type { User } from '../interfaces/User';
 
 const user = ref<User | null>(null)
 const loading = ref(true)
 const error = ref<string | null>(null)
 
-const fetchUser = async (id: string) => {
+const fetchUser = async () => {
   try {
     // Simulate an API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     user.value = {
-      id,
       name: 'John Doe',
       email: 'john.doe@example.com',
-      age: 30
+      age: 30,
     }
   } catch (err) {
     error.value = 'Failed to load user data'
@@ -53,12 +41,12 @@ const fetchUser = async (id: string) => {
 }
 
 onMounted(() => {
-  fetchUser(userId)
+  fetchUser()
 })
 </script>
 
 <style scoped>
-.user-show {
+.user-view {
   padding: 20px;
 }
 </style>
