@@ -29,4 +29,4 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           npm install -g vercel
-          vercel deploy --prod --token $VERCEL_TOKEN --confirm --confirm --scope rehmankha73
+          vercel deploy --prod --token $VERCEL_TOKEN --confirm --scope rehmankha73
