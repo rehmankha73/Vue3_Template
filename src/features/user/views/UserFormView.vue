@@ -12,6 +12,5 @@ import UserForm from '../components/UserForm.vue'
 
 <style scoped>
 .user-form {
-  padding: 20px;
 }
 </style>

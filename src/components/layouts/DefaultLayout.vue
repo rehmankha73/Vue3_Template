@@ -40,8 +40,6 @@ nav a {
 
 .main-content {
   padding: 20px;
-  margin-top: 60px; /* adjust based on header height */
-  margin-bottom: 40px; /* adjust based on footer height */
 }
 
 .footer {

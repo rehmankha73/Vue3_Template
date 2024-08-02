@@ -1,6 +1,10 @@
 <template>
   <div class="user-view">
-    <h1>User Information</h1>
+    <div class="d-flex ">
+      <h1>User Information</h1>
+      <v-spacer />
+      <v-btn color="primary" to="/user/form" class="mb-4">Add new User</v-btn>
+    </div>
     <div v-if="loading">Loading...</div>
     <div v-else-if="error">{{ error }}</div>
     <div v-else>
@@ -13,6 +17,7 @@
         <p>No user data available.</p>
       </div>
     </div>
+
   </div>
 </template>
 

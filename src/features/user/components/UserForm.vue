@@ -12,7 +12,9 @@
       <label for="age">Age:</label>
       <input type="number" id="age" v-model="form.age" required />
     </div>
-    <button type="submit">Submit</button>
+    <div>
+      <v-btn color="primary" type="submit" >Submit</v-btn>
+    </div>
   </form>
   <div v-if="submitted">
     <h2>Form Submitted</h2>
