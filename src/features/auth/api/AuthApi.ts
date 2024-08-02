@@ -1,6 +1,6 @@
-import type { RegistrationUser } from '@/interfaces/auth/RegistrationUser'
-import type { User } from '@/views/company/types'
+import type { User } from '@/features/user/interfaces/User'
 import axios from 'axios'
+import type { RegistrationUser } from '../interfaces/RegistrationUser'
 
 function getBaseUrl() {
   return `/authentication`
@@ -9,55 +9,36 @@ function getBaseUrl() {
 export const AuthApi = {
   login: async function (email: string, password: string) {
     try {
-      const response = await axios.post(
-        getBaseUrl() + `/login`,
-        { email, password }
-        // { headers: localeHeader() }
-      )
+      const response = await axios.post(getBaseUrl() + `/login`, {
+        email,
+        password,
+      })
 
       return {
         email: email,
         accessToken: response.data.token,
       } as User
-    } catch (error) {
-      // handleApiError(error);
-    }
+    } catch (error) {}
   },
 
   logout: async function () {
     try {
-      await axios.get(getBaseUrl() + `/logout`, {
-        // headers: authHeader(),
-      })
-    } catch (error) {
-      // handleApiError(error);
-    }
+      await axios.get(getBaseUrl() + `/logout`, {})
+    } catch (error) {}
   },
 
   register: async function (user: RegistrationUser) {
     try {
-      const response = await axios.post(
-        getBaseUrl() + `/register`,
-        { ...user }
-        // { headers: localeHeader() }
-      )
+      const response = await axios.post(getBaseUrl() + `/register`, { ...user })
 
       return response.data.data
-    } catch (error) {
-      // handleApiError(error);
-    }
+    } catch (error) {}
   },
 
   forgotPassword: async function (email: string) {
     try {
-      await axios.post(
-        getBaseUrl() + `/forgot-password`,
-        { email: email }
-        // { headers: localeHeader() }
-      )
-    } catch (error) {
-      // handleApiError(error);
-    }
+      await axios.post(getBaseUrl() + `/forgot-password`, { email: email })
+    } catch (error) {}
   },
 
   resetPassword: async function (args: {
@@ -69,18 +50,12 @@ export const AuthApi = {
     const { token, email, password, password_confirmation } = args
 
     try {
-      await axios.post(
-        getBaseUrl() + `/reset-password`,
-        {
-          token,
-          email,
-          password,
-          password_confirmation,
-        }
-        // { headers: localeHeader() }
-      )
-    } catch (error) {
-      // handleApiError(error);
-    }
+      await axios.post(getBaseUrl() + `/reset-password`, {
+        token,
+        email,
+        password,
+        password_confirmation,
+      })
+    } catch (error) {}
   },
 }

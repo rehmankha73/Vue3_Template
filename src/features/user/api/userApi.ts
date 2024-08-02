@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { User } from '../types'
+import type { User } from '../interfaces/User'
 
 function getBaseUrl(id?: string) {
   return `/users/${id ? id : 'me'}`

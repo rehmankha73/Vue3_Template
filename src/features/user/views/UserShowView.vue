@@ -18,9 +18,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import type { User } from '../interfaces/User';
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import type { User } from '../interfaces/User'
 
 const route = useRoute()
 const userId = route.params.id as string
